@@ -8,6 +8,11 @@
     pkgs.php82
     pkgs.php82Packages.composer
     pkgs.nodejs_20
+    pkgs.apt
+    pkgs.sqlite
+    pkgs.mariadb
+    pkgs.sudo
+    pkgs.service-wrapper
   ];
   # Sets environment variables in the workspace
   env = {};
