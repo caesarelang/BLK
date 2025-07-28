@@ -72,26 +72,26 @@
 
     <!-- Benefits Section -->
     <section class="my-20">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Mengapa Memilih Balai Latihan Kerja?</h2>
-        <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-xl p-8 rounded-lg shadow-lg px-4 text-white">
+        <h2 class="text-3xl font-bold text-center mb-12 text-dark">Mengapa Memilih Balai Latihan Kerja?</h2>
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg px-4 text-dark">
             <div class="flex flex-col md:flex-row justify-between space-y-8 md:space-y-0 md:space-x-8">
                 <!-- Benefit 1 -->
                 <div class="text-center md:text-left">
-                    <div class="text-4xl text-blue-400 mb-4 mx-auto md:mx-0">🏆</div>
+                    <div class="text-4xl text-blue-500 mb-4 mx-auto md:mx-0">🏆</div>
                     <h3 class="text-xl font-bold mb-2">Kurikulum Standar Industri</h3>
-                    <p class="text-gray-100">Materi yang kami ajarkan disusun bersama para ahli untuk memastikan relevansi dengan kebutuhan dunia kerja saat ini.</p>
+                    <p class="text-gray-600">Materi yang kami ajarkan disusun bersama para ahli untuk memastikan relevansi dengan kebutuhan dunia kerja saat ini.</p>
                 </div>
                 <!-- Benefit 2 -->
                 <div class="text-center md:text-left">
-                    <div class="text-4xl text-blue-400 mb-4 mx-auto md:mx-0">👨‍🏫</div>
+                    <div class="text-4xl text-blue-500 mb-4 mx-auto md:mx-0">👨‍🏫</div>
                     <h3 class="text-xl font-bold mb-2">Instruktur Berpengalaman</h3>
-                    <p class="text-gray-100">Belajar langsung dari praktisi profesional yang telah bertahun-tahun berkarir di bidangnya masing-masing.</p>
+                    <p class="text-gray-600">Belajar langsung dari praktisi profesional yang telah bertahun-tahun berkarir di bidangnya masing-masing.</p>
                 </div>
                 <!-- Benefit 3 -->
                 <div class="text-center md:text-left">
-                    <div class="text-4xl text-blue-400 mb-4 mx-auto md:mx-0">📄</div>
+                    <div class="text-4xl text-blue-500 mb-4 mx-auto md:mx-0">📄</div>
                     <h3 class="text-xl font-bold mb-2">Sertifikat Resmi</h3>
-                    <p class="text-gray-100">Dapatkan sertifikat kompetensi yang diakui untuk meningkatkan nilai jual Anda di mata perusahaan.</p>
+                    <p class="text-gray-600">Dapatkan sertifikat kompetensi yang diakui untuk meningkatkan nilai jual Anda di mata perusahaan.</p>
                 </div>
             </div>
         </div>
@@ -99,41 +99,41 @@
 
     <!-- FAQ Section -->
     <section class="my-20 max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-white">Frequently Asked Questions (FAQ)</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-dark">Frequently Asked Questions (FAQ)</h2>
         <div class="space-y-4">
             <!-- FAQ 1 -->
-            <div x-data="{ open: false }" class="bg-white/10 backdrop-blur-xl rounded-lg shadow-sm text-white">
+            <div x-data="{ open: false }" class="bg-white rounded-lg shadow-sm text-dark">
                 <button @click="open = !open" class="w-full flex justify-between items-center text-left p-5">
                     <h3 class="font-semibold text-lg">Apakah pelatihan ini cocok untuk pemula?</h3>
                     <svg class="w-6 h-6 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div x-show="open" x-transition class="px-5 pb-5 text-gray-100">
+                <div x-show="open" x-transition class="px-5 pb-5 text-gray-600">
                     <p>Tentu saja! Kami memiliki berbagai pilihan kejuruan yang dirancang khusus untuk pemula tanpa latar belakang IT sama sekali. Materi akan diajarkan dari dasar.</p>
                 </div>
             </div>
             <!-- FAQ 2 -->
-            <div x-data="{ open: false }" class="bg-white/10 backdrop-blur-xl rounded-lg shadow-sm text-white">
+            <div x-data="{ open: false }" class="bg-white rounded-lg shadow-sm text-dark">
                 <button @click="open = !open" class="w-full flex justify-between items-center text-left p-5">
                     <h3 class="font-semibold text-lg">Bagaimana cara mendaftarnya?</h3>
                     <svg class="w-6 h-6 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div x-show="open" x-transition class="px-5 pb-5 text-gray-100">
+                <div x-show="open" x-transition class="px-5 pb-5 text-gray-600">
                     <p>Anda bisa mengklik tombol "Daftar" di pojok kanan atas, kemudian pilih kejuruan yang diminati, dan isi formulir pendaftaran yang tersedia.</p>
                 </div>
             </div>
             <!-- FAQ 3 -->
-            <div x-data="{ open: false }" class="bg-white/10 backdrop-blur-xl rounded-lg shadow-sm text-white">
+            <div x-data="{ open: false }" class="bg-white rounded-lg shadow-sm text-dark">
                 <button @click="open = !open" class="w-full flex justify-between items-center text-left p-5">
                     <h3 class="font-semibold text-lg">Apakah ada jaminan kerja setelah lulus?</h3>
                     <svg class="w-6 h-6 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div x-show="open" x-transition class="px-5 pb-5 text-gray-100">
+                <div x-show="open" x-transition class="px-5 pb-5 text-gray-600">
                     <p>Kami tidak memberikan jaminan kerja, namun kami memiliki program penyaluran kerja dan career coaching yang akan membantu Anda mempersiapkan diri untuk memasuki dunia kerja, mulai dari pembuatan CV hingga persiapan interview.</p>
                 </div>
             </div>
