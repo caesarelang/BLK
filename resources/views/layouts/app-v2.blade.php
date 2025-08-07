@@ -15,6 +15,25 @@
             color: #171717;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function() {
+                    // Clear input fields after form submission
+                    form.querySelectorAll('input, textarea, select').forEach(input => {
+                        if (input.type === 'text' || input.type === 'email' || input.type === 'date' || input.tagName === 'TEXTAREA') {
+                            input.value = '';
+                        } else if (input.tagName === 'SELECT') {
+                            input.selectedIndex = 0; // Reset to the first option
+                        } else if (input.type === 'checkbox' || input.type === 'radio') {
+                            input.checked = false;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body class="font-sans antialiased bg-gray-50 text-dark flex flex-col min-h-screen">
     <!-- Navbar -->
@@ -24,19 +43,19 @@
                 <!-- Left Section: Logo & Nav Links -->
                 <div class="flex items-center space-x-8">
                     <div>
-                        <a href="/" class="text-2xl font-bold text-blue-600">Balai Latihan Kerja</a>
+                        <a href="{{ route('home') }}" class="text-2xl font-bold text-blue-600">Balai Latihan Kerja</a>
                         <p class="text-sm text-gray-500">Kabupaten Kediri</p>
                     </div>
                     <nav class="hidden md:flex items-center space-x-8">
-                        <a href="/" class="text-dark hover:text-blue-600 font-medium">Home</a>
-                        <a href="{{ route('kejuruan') }}" class="text-dark hover:text-blue-600 font-medium">Kejuruan</a>
-                        <a href="{{ route('pengumuman') }}" class="text-dark hover:text-blue-600 font-medium">Pengumuman</a>
+                        <a href="{{ route('home') }}" class="text-dark hover:text-blue-600 font-medium {{ request()->routeIs('home') ? 'underline font-bold' : '' }}">Home</a>
+                        <a href="{{ route('kejuruan') }}" class="text-dark hover:text-blue-600 font-medium {{ request()->routeIs('kejuruan') ? 'underline font-bold' : '' }}">Kejuruan</a>
+                        <a href="{{ route('faq.index') }}" class="text-dark hover:text-blue-600 font-medium {{ request()->routeIs('faq.index') ? 'underline font-bold' : '' }}">FAQ</a>
                     </nav>
                 </div>
 
                 <!-- Right Section: Desktop Register Button -->
                 <div class="hidden md:flex items-center">
-                    <a href="{{ route('pendaftaran.checkForm') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                    <a href="{{ route('registration.create.step1') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                         Daftar
                     </a>
                 </div>
@@ -55,12 +74,12 @@
             <!-- Mobile Menu -->
             <div x-show="open" @click.away="open = false" class="md:hidden pb-4">
                 <nav class="flex flex-col space-y-3">
-                    <a href="/" class="text-dark hover:text-blue-600 font-medium">Home</a>
+                    <a href="{{ route('home') }}" class="text-dark hover:text-blue-600 font-medium">Home</a>
                     <a href="{{ route('kejuruan') }}" class="text-dark hover:text-blue-600 font-medium">Kejuruan</a>
-                    <a href="{{ route('pengumuman') }}" class="text-dark hover:text-blue-600 font-medium">Pengumuman</a>
+                    <a href="{{ route('faq.index') }}" class="text-dark hover:text-blue-600 font-medium">FAQ</a>
                 </nav>
                 <hr class="my-4 border-gray-300">
-                <a href="{{ route('pendaftaran.checkForm') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <a href="{{ route('registration.create.step1') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                     Daftar
                 </a>
             </div>
@@ -103,7 +122,7 @@
                             </a>
                             <a href="#" class="text-gray-500 hover:text-blue-600">
                                 <span class="sr-only">Instagram</span>
-                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427.465C9.53 2.013 9.884 2 12.315 2zm-1.161 1.545a4.2 4.2 0 00-2.132.52 3.402 3.402 0 00-1.24 1.054 3.402 3.402 0 00-.52 2.132c-.044 1.01-.055 1.35-.055 3.75s.011 2.74.055 3.75a4.2 4.2 0 00.52 2.132 3.402 3.402 0 001.24 1.054 3.402 3.402 0 002.132.52c1.01.044 1.35.055 3.75.055s2.74-.011 3.75-.055a4.2 4.2 0 002.132-.52 3.402 3.402 0 001.24-1.054 3.402 3.402 0 00.52-2.132c.044-1.01.055-1.35.055-3.75s-.011-2.74-.055-3.75a4.2 4.2 0 00-.52-2.132 3.402 3.402 0 00-1.24-1.054 3.402 3.402 0 00-2.132-.52c-1.01-.044-1.35-.055-3.75-.055s-2.74.011-3.75.055zm.306 4.695a3.576 3.576 0 106.848 1.485 3.576 3.576 0 00-6.848-1.485zM12 15a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd" /></svg>
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.74.055-3.75a4.2 4.2 0 00-.52-2.132 3.402 3.402 0 00-1.24-1.054 3.402 3.402 0 00-2.132-.52c-1.01-.044-1.35-.055-3.75-.055s-2.74.011-3.75.055zm.306 4.695a3.576 3.576 0 106.848 1.485 3.576 3.576 0 00-6.848-1.485zM12 15a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd" /></svg>
                             </a>
                             <a href="#" class="text-gray-500 hover:text-blue-600">
                                 <span class="sr-only">Twitter</span>

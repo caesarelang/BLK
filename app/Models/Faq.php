@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengumuman extends Model
+class Faq extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,14 @@ class Pengumuman extends Model
      *
      * @var string
      */
-    protected $table = 'pengumumans';
+    protected $table = 'faq';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'faq_id';
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +29,7 @@ class Pengumuman extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'judul',
-        'isi',
-        'is_published',
+        'question',
+        'answer',
     ];
 }

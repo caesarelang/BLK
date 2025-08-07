@@ -15,13 +15,36 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
+            
+            {{-- Added a wrapper div for relative positioning --}}
+            <div class="relative">
+                <x-text-input id="password" class="block mt-1 w-full pr-10" {{-- Added padding right to make space for the button --}}
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
+                
+                {{-- Added password toggle button --}}
+                <button type="button" id="password-toggle" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+                    {{-- Simple text icon, you can replace with an actual icon if desired --}}
+                    Show
+                </button>
+            </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            
+            {{-- Added inline script for password toggle --}}
+            <script>
+                const passwordInput = document.getElementById('password');
+                const passwordToggle = document.getElementById('password-toggle');
+
+                passwordToggle.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    // Change button text based on password visibility
+                    this.textContent = type === 'password' ? 'Show' : 'Hide';
+                });
+            </script>
         </div>
 
         <!-- Remember Me -->

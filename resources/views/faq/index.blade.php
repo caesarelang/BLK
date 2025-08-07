@@ -33,7 +33,11 @@
                                 </h2>
                                 {{-- Tanggal Publikasi (jika relevan, atau hapus jika tidak) --}}
                                 <p class="text-sm text-gray-500 mt-2">
-                                    Dipublikasikan pada: {{ $faq->created_at->translatedFormat('l, d F Y') }}
+                                    Dipublikasikan pada: @if ($faq->created_at)
+                                        {{ $faq->created_at->translatedFormat('l, d F Y') }}
+                                    @else
+                                        Tanggal tidak tersedia
+                                    @endif
                                 </p>
                             </header>
                             
@@ -68,3 +72,5 @@
     }
 </style>
 @endpush
+</body>
+</html>

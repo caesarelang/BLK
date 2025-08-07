@@ -10,29 +10,40 @@
             </div>
         @endif
 
+        @if ($errors->any())
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                <p class="font-bold">Terjadi kesalahan:</p>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="bg-white p-8 rounded-lg shadow-lg">
-            <form action="{{ route('pendaftaran.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('registration.store') }}" method="POST">
                 @csrf
 
                 <div class="mb-6">
-                    <label for="id_pelatihan" class="block text-gray-700 text-sm font-bold mb-2">Pilih Kejuruan:</label>
-                    <select name="id_pelatihan" id="id_pelatihan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('id_pelatihan') border-red-500 @enderror" required>
+                    <label for="program_id" class="block text-gray-700 text-sm font-bold mb-2">Pilih Program:</label>
+                    <select name="program_id" id="program_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('program_id') border-red-500 @enderror" required>
                         <option value="">-- Pilih Salah Satu --</option>
-                        @foreach ($pelatihans as $pelatihan)
-                            <option value="{{ $pelatihan->id_pelatihan }}" {{ old('id_pelatihan') == $pelatihan->id_pelatihan ? 'selected' : '' }}>
-                                {{ $pelatihan->nama_pelatihan }}
+                        @foreach ($programs as $program)
+                            <option value="{{ $program->program_id }}" {{ old('program_id') == $program->program_id ? 'selected' : '' }}>
+                                {{ $program->title }}
                             </option>
                         @endforeach
                     </select>
-                    @error('id_pelatihan')
+                    @error('program_id')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-6">
-                    <label for="nama_lengkap" class="block text-gray-700 text-sm font-bold mb-2">Nama Lengkap:</label>
-                    <input type="text" name="nama_lengkap" id="nama_lengkap" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('nama_lengkap') border-red-500 @enderror" value="{{ old('nama_lengkap') }}" required>
-                    @error('nama_lengkap')
+                    <label for="full_name" class="block text-gray-700 text-sm font-bold mb-2">Nama Lengkap:</label>
+                    <input type="text" name="full_name" id="full_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('full_name') border-red-500 @enderror" value="{{ old('full_name', $full_name ?? '') }}" required>
+                    @error('full_name')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>
@@ -47,32 +58,40 @@
 
                 <div class="mb-6">
                     <label for="nik" class="block text-gray-700 text-sm font-bold mb-2">NIK:</label>
-                    <input type="text" name="nik" id="nik" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('nik') border-red-500 @enderror" value="{{ old('nik') }}" required>
+                    <input type="text" name="nik" id="nik" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('nik') border-red-500 @enderror" value="{{ old('nik', $nik ?? '') }}" required>
                     @error('nik')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-6">
-                    <label for="tanggal_lahir" class="block text-gray-700 text-sm font-bold mb-2">Tanggal Lahir:</label>
-                    <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('tanggal_lahir') border-red-500 @enderror" value="{{ old('tanggal_lahir') }}">
-                    @error('tanggal_lahir')
+                    <label for="date_of_birth" class="block text-gray-700 text-sm font-bold mb-2">Tanggal Lahir:</label>
+                    <input type="date" name="date_of_birth" id="date_of_birth" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('date_of_birth') border-red-500 @enderror" value="{{ old('date_of_birth') }}">
+                    @error('date_of_birth')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-6">
-                    <label for="url_foto_ijasah" class="block text-gray-700 text-sm font-bold mb-2">Foto Ijazah (Opsional):</label>
-                    <input type="file" name="url_foto_ijasah" id="url_foto_ijasah" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('url_foto_ijasah') border-red-500 @enderror">
-                    @error('url_foto_ijasah')
+                    <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Alamat:</label>
+                    <textarea name="address" id="address" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('address') border-red-500 @enderror">{{ old('address') }}</textarea>
+                    @error('address')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-6">
-                    <label for="url_foto_ktp" class="block text-gray-700 text-sm font-bold mb-2">Foto KTP (Opsional):</label>
-                    <input type="file" name="url_foto_ktp" id="url_foto_ktp" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('url_foto_ktp') border-red-500 @enderror">
-                    @error('url_foto_ktp')
+                    <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Nomor Telepon:</label>
+                    <input type="text" name="phone_number" id="phone_number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('phone_number') border-red-500 @enderror" value="{{ old('phone_number') }}">
+                    @error('phone_number')
+                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label for="last_education" class="block text-gray-700 text-sm font-bold mb-2">Pendidikan Terakhir:</label>
+                    <input type="text" name="last_education" id="last_education" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('last_education') border-red-500 @enderror" value="{{ old('last_education') }}">
+                    @error('last_education')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>

@@ -25,7 +25,6 @@
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
                         <a href="{{ route('kejuruan') }}" class="text-gray-600 hover:text-blue-600 font-medium">Kejuruan</a>
-                        <a href="{{ route('pengumuman') }}" class="text-gray-600 hover:text-blue-600 font-medium">Pengumuman</a>
                     </nav>
                 </div>
 
@@ -51,7 +50,6 @@
             <div x-show="open" @click.away="open = false" class="md:hidden pb-4">
                 <nav class="flex flex-col space-y-3">
                     <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-                    <a href="{{ route('kejuruan') }}" class="text-gray-600 hover:text-blue-600 font-medium">Kejuruan</a>
                     <a href="{{ route('pengumuman') }}" class="text-gray-600 hover:text-blue-600 font-medium">Pengumuman</a>
                 </nav>
                 <hr class="my-4">
