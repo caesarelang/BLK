@@ -31,18 +31,19 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+            
+            $user = Auth::user();
+            
             // Check if the user is an admin
-            if (Auth::user()->isAdmin()) {
-                $request->session()->regenerate();
+            if ($user->isAdmin()) {
                 return redirect()->route('admin.dashboard')
-                    ->with('success', 'Login successful. Welcome back, ' . Auth::user()->name . '!');
+                    ->with('success', 'Login successful. Welcome back, ' . $user->name . '!');
             } else {
-                // Log the user out immediately if they are not an admin
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'You do not have administrative privileges.',
-                ])->onlyInput('email');
+                // Redirect participants to their dashboard
+                return redirect()->route('peserta.dashboard')
+                    ->with('success', 'Login successful. Welcome, ' . $user->name . '!');
             }
         }
 

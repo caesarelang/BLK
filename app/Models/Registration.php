@@ -60,7 +60,10 @@ class Registration extends Model
     {
         return $this->belongsTo(Participant::class, 'participant_id', 'participant_id');
     }
-
+ public function user()
+    {
+        return $this->hasOne(User::class, 'registration_id', 'registration_id');
+    }
     /**
      * Get the program that owns the registration.
      */

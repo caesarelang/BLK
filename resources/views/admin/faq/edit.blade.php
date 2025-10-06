@@ -37,7 +37,7 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <a href="{{ route('admin.faq.index') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-2">
+                <a href="{{ route('admin.faq.create') }}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-2">
                     Batal
                 </a>
                 <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">

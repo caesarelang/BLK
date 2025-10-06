@@ -30,7 +30,7 @@
 
                 <!-- Right Section: Desktop Register Button -->
                 <div class="hidden md:flex items-center">
-                    <a href="{{ route('pendaftaran.checkForm') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <a href="{{ route('registration.new') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                         Daftar
                     </a>
                 </div>
@@ -53,7 +53,7 @@
                     <a href="{{ route('pengumuman') }}" class="text-gray-600 hover:text-blue-600 font-medium">Pengumuman</a>
                 </nav>
                 <hr class="my-4">
-                <a href="{{ route('pendaftaran.checkForm') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <a href="{{ route('registration.new') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                     Daftar
                 </a>
             </div>

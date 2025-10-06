@@ -30,7 +30,8 @@ class FaqController extends Controller
      */
     public function create()
     {
-        return view('admin.faq.create');
+        $faqs = Faq::orderBy('created_at', 'desc')->get();
+        return view('admin.faq.create', compact('faqs'));
     }
 
     /**
@@ -45,7 +46,7 @@ class FaqController extends Controller
 
         Faq::create($request->all());
 
-        return redirect()->route('admin.faq.index')->with('success', 'FAQ berhasil ditambahkan.');
+        return redirect()->route('admin.faq.create')->with('success', 'FAQ berhasil ditambahkan.');
     }
 
     /**
@@ -68,7 +69,7 @@ class FaqController extends Controller
 
         $faq->update($request->all());
 
-        return redirect()->route('admin.faq.index')->with('success', 'FAQ berhasil diperbarui.');
+        return redirect()->route('admin.faq.create')->with('success', 'FAQ berhasil diperbarui.');
     }
 
     /**
@@ -78,6 +79,6 @@ class FaqController extends Controller
     {
         $faq->delete();
 
-        return redirect()->route('admin.faq.index')->with('success', 'FAQ berhasil dihapus.');
+        return redirect()->route('admin.faq.create')->with('success', 'FAQ berhasil dihapus.');
     }
 }

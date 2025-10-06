@@ -32,7 +32,7 @@ class Program extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
+        'title',           // This is the actual column name
         'description',
         'start_date',
         'end_date',
@@ -74,5 +74,14 @@ class Program extends Model
     public function registrations(): HasMany
     {
         return $this->hasMany(Registration::class, 'program_id');
+    }
+public function materi(): HasMany
+{
+    return $this->hasMany(Materi::class, 'program_id', 'program_id');
+}
+    // Add an accessor to get 'name' from 'title'
+    public function getNameAttribute()
+    {
+        return $this->title;
     }
 }

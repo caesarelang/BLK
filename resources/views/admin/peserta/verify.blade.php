@@ -118,7 +118,7 @@
                             <form :action="`/admin/verify-registrations/${currentRegistration.registration_id}`" method="POST">
                                 @csrf
                                 @method('PATCH')
-                                <input type="hidden" name="status" value="Approved">
+                                <input type="hidden" name="status" value="disetujui">
                                 <div class="flex justify-end">
                                     <button type="button" @click="showApproveModal = false" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">Batal</button>
                                     <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Setujui</button>
@@ -135,7 +135,7 @@
                             <form :action="`/admin/verify-registrations/${currentRegistration.registration_id}`" method="POST">
                                 @csrf
                                 @method('PATCH')
-                                <input type="hidden" name="status" value="Rejected">
+                                <input type="hidden" name="status" value="ditolak">
                                 <div class="flex justify-end">
                                     <button type="button" @click="showRejectModal = false" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">Batal</button>
                                     <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Tolak</button>

@@ -59,6 +59,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'adminauth' => \App\Http\Middleware\AdminAuthMiddleware::class, // Tambahkan baris ini
+        'registration.session' => \App\Http\Middleware\RegistrationSessionMiddleware::class,
     ];
 
     /**

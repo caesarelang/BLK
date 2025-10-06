@@ -14,26 +14,35 @@
         .text-dark {
             color: #171717;
         }
+        input:invalid, select:invalid, textarea:invalid {
+            box-shadow: none;
+        }
+        .border-red-500 {
+            border-color: rgb(239, 68, 68);
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: rgb(59, 130, 246);
+        }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function() {
-                    // Clear input fields after form submission
-                    form.querySelectorAll('input, textarea, select').forEach(input => {
-                        if (input.type === 'text' || input.type === 'email' || input.type === 'date' || input.tagName === 'TEXTAREA') {
-                            input.value = '';
-                        } else if (input.tagName === 'SELECT') {
-                            input.selectedIndex = 0; // Reset to the first option
-                        } else if (input.type === 'checkbox' || input.type === 'radio') {
-                            input.checked = false;
-                        }
-                    });
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const forms = document.querySelectorAll('form:not(#registrationForm)'); // Exclude registration form
+        forms.forEach(form => {
+            form.addEventListener('submit', function() {
+                // Clear input fields after form submission
+                form.querySelectorAll('input, textarea, select').forEach(input => {
+                    if (input.type === 'text' || input.type === 'email' || input.type === 'date' || input.tagName === 'TEXTAREA') {
+                        input.value = '';
+                    } else if (input.tagName === 'SELECT') {
+                        input.selectedIndex = 0;
+                    } else if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = false;
+                    }
                 });
             });
         });
-    </script>
+    });
+</script>
 </head>
 <body class="font-sans antialiased bg-gray-50 text-dark flex flex-col min-h-screen">
     <!-- Navbar -->
@@ -53,12 +62,19 @@
                     </nav>
                 </div>
 
-                <!-- Right Section: Desktop Register Button -->
-                <div class="hidden md:flex items-center">
-                    <a href="{{ route('registration.create.step1') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
-                        Daftar
-                    </a>
-                </div>
+<!-- Right Section: Desktop Register + Cek Status -->
+<div class="hidden md:flex items-center space-x-3">
+    <!-- Tombol Daftar -->
+    <a href="{{ route('registration.new') }}" 
+       class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+        Daftar
+    </a>
+
+<a href="{{ route('registration.check') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+        Cek Status
+    </a>
+</div>
+
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
@@ -79,7 +95,7 @@
                     <a href="{{ route('faq.index') }}" class="text-dark hover:text-blue-600 font-medium">FAQ</a>
                 </nav>
                 <hr class="my-4 border-gray-300">
-                <a href="{{ route('registration.create.step1') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                <a href="{{ route('registration.new') }}" class="block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
                     Daftar
                 </a>
             </div>
